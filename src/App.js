@@ -1,10 +1,15 @@
 import './App.css';
+import "./index.css"
+
+import Hero from './components/Hero'
+import About from './components/About'
 
 function App() {
   return (
     <div className="App">
       <h1>
-        This is my initiaal change for my first personal Reaact aapp
+        <Hero/>
+        <About/>
       </h1>
     </div>
   );

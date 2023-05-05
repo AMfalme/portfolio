@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import logo from '../static/images/logo.png'
+import myPortfolio from '../static/images/mfalme.png'
 
 const navigation = [
-  { name: 'About', href: '#' },
-  { name: 'Work', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Testimonials', href: '#' },
+  { name: 'About', href: '#About'},
+  { name: 'Work', href: '#Work' },
+  { name: 'Projects', href: '#Projects' },
+  
 ]
 
 export default function Hero() {
@@ -21,7 +23,7 @@ export default function Hero() {
               <span className="sr-only">Mfalme Griffin</span>
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src={logo}
                 alt=""
               />
             </a>
@@ -110,9 +112,22 @@ export default function Hero() {
             }}
           />
         </div>
-        <div className="mx-auto max-w-2xl py-12 sm:py-20 lg:pt-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+        <img class="pt-20 w-44 h-auto md:h-auto rounded-full mx-auto" src={myPortfolio} alt="" />
+        <div className="mx-auto max-w-2xl">
+        <div className="text-center">
+            <p className="m-6 text-lg leading-8 text-gray-600">
+              Hi, I'm Griffin. 👋🏾
+              {/*  and transforming client vision
+               into reliable perfection that will exceed your expectations. */}
+            </p>
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+              I craft custom software solutions into digital realities.
+            </h1>
+            
+          </div>
+          <div className="hidden sm:m-8 sm:flex sm:justify-center">
+            
+            <div className="relative rounded-full px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Let's build something amazing together.{' '}
               <a href="#" className="font-semibold text-indigo-600">
                 <span className="absolute inset-0" aria-hidden="true" />
@@ -120,42 +135,9 @@ export default function Hero() {
               </a>
             </div>
           </div>
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Transforming ideas into digital realities.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              Expertly crafting custom software solutions and transforming client vision
-               into reliable perfection that will exceed your expectations.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Some of my Work
-              </a>
-              <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-                Let's get in touch! <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
+            
           
         </div>
-        <div class="hidden py-8 mx-20 border-y border-gray-100 dark:border-gray-800 sm:flex justify-between">
-                    <div class="text-left">
-                        <h6 class="text-lg font-semibold text-gray-700 dark:text-white">The lowest price</h6>
-                        <p class="mt-2 text-gray-500">Some text here</p>
-                    </div>
-                    <div class="text-left">
-                        <h6 class="text-lg font-semibold text-gray-700 dark:text-white">The fastest on the market</h6>
-                        <p class="mt-2 text-gray-500">Some text here</p>
-                    </div>
-                    <div class="text-left">
-                        <h6 class="text-lg font-semibold text-gray-700 dark:text-white">The most loved</h6>
-                        <p class="mt-2 text-gray-500">Some text here</p>
-                    </div>
-                </div>
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
           aria-hidden="true"

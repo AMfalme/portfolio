@@ -1,14 +1,60 @@
-import React from 'react'
-import about from '../static/images/ofisi.jpg'
+import React, { useState } from 'react'
+import logo from '../static/images/logo-bposeats.png'
+import mizizi from '../static/images/mizizi.png'
 
-export default function
-    () {
+
+const workExperiences = [
+    {
+        companyTitle: 'Duara, Africa’s Talking Lab ',
+        description: `As a startup targeting the public cloud market in Kenya, 
+        we successfully developed a public cloud platform (Infrastructure as a Service) 
+        basing our code-base on the openstack project. I was in charge of the user interface
+        and user experience in the interaction with our platform and managed to develop 
+        the horizon module (front end for openstack) which has been written in Django 
+        and Angular frameworks. Also did the deployment and created pipelines that ensured
+        best practices in innovation and the devops/automation world are adhered to to
+         the letter. 
+        `,
+        jobTitle: 'Front-End Software Developer',
+        duration: {
+            startDate: 'August 2018',
+            endDate: 'May 2019'
+        }
+    },
+    {
+        companyTitle: 'BPOSeats, Remote Philippines',
+        description: `BPOseats has a keen interest when it comes to office productivity. 
+        I work hand in hand with a team of software developers to build tools and platforms 
+        for businesses to start, manage and oversee offshore and remote teams with a keen aim on 
+        improving productivity while finding an intelligent way to analyze and give accurate results. 
+        I am directly involved in bug fixing of the front end web application done in vue and occasional
+         Django bug fixes in the API integration. The API integration. 
+        `,
+        jobTitle: 'Web Developer', 
+        duration: {
+            startDate: 'March 2021',
+            endDate: 'March 2022'
+        }
+    },
+]
+
+export default function() {
+
+    const [experiences, setExperience] = useState(workExperiences);
+    const [ email, setEmail ] = useState("");
+    
+    const handleEmailChange = (event) => {
+        console.log(email);
+        setEmail(event.target.value);
+    }
+
     return (
-        <div class="sm:px-8 mt-24 md:mt-28 mx-auto max-w-7xl lg:px-8 relative px-4 sm:px-8 lg:px-12 mx-auto max-w-2xl lg:max-w-5xl">
-            <img src={about} alt="" />
+        <div id='Work' class="sm:px-8 mt-24 md:mt-28 mx-auto max-w-7xl lg:px-8 relative px-4 sm:px-8 lg:px-12 mx-auto max-w-2xl lg:max-w-5xl">
+            
             <div class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
                 
                 <div class="flex flex-col gap-16">
+                    {experiences.map(experience=> (
                     <article class="group relative flex flex-col items-start">
                         <h2 class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
                             <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl">
@@ -17,7 +63,7 @@ export default function
                                 <span class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl">
                                 </span>
                                 <span class="relative z-10">
-                                    Crafting a design system for a multiplanetary future
+                                    {experience.companyTitle}
                                 </span>
                             </a>
                         </h2>
@@ -25,21 +71,19 @@ export default function
                             <span class="absolute inset-y-0 left-0 flex items-center" aria-hidden="true">
                                 <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
                             </span>
-                            September 5, 2022
+                            {experience.duration.startDate}
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-2">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+
+                            {experience.duration.endDate}
+
                         </time>
                         <p class="relative z-10 mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                            Most companies try to stay ahead of the curve when it comes to visual design,
-                            but for Planetaria we needed to create a brand that would still inspire us 100 years
-                            from now when humanity has spread across our entire solar system.
+                            {experience.description}
                         </p>
-                        <div aria-hidden="true" class="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500">
-                            Read article
-                            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" class="ml-1 h-4 w-4 stroke-current">
-                                <path d="M6.75 5.75 9.25 8l-2.5 2.25" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                </path>
-                            </svg>
-                        </div>
-                    </article>
+                    </article>)
+                    )}
                 </div>
                 <div class="space-y-10 lg:pl-16 xl:pl-24">
                     <form action="/thank-you" class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
@@ -84,6 +128,8 @@ export default function
                                 dark:focus:border-teal-400 
                                 dark:focus:ring-teal-400/10 
                                 sm:text-sm"
+                                value={email}
+                                onChange={handleEmailChange}
                             />
                             <button class="inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70 ml-4 flex-none" type="submit">
                                 Join
@@ -96,26 +142,37 @@ export default function
                     </form>
                     <div class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
                         <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 flex-none"><path d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z" class="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500">                                
-                                <path d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5" class="stroke-zinc-400 dark:stroke-zinc-500">
-                                    </path>
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-6 w-6 flex-none"><path d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z" class="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500">                                
+                            <path d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5" class="stroke-zinc-400 dark:stroke-zinc-500">
                                 </path>
-                            </svg>
+                            </path>
+                        </svg>
+                        
                             <span class="ml-3">Work</span>
                         </h2>
                         <ol class="mt-6 space-y-4">
                             <li class="flex gap-4">
                                 <div class="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                                <img alt="" loading="lazy" width="32" height="32" decoding="async" data-nimg="1" class="h-7 w-7" src="/_next/static/media/planetaria.ecd81ade.svg" 
-                                />
+                                <img 
+                                alt="" 
+                                loading="lazy" 
+                                width="28" 
+                                height="28" 
+                                decoding="async" 
+                                data-nimg="1" 
+                                class="h-7 w-7" 
+                                src={mizizi} 
+                            />
+
+                                
                                 </div>
                                 <dl class="flex flex-auto flex-wrap gap-x-2">
                                 <dt class="sr-only">Company</dt>
                                 <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                                    Planetaria
+                                    Duara
                                 </dd>
                                 <dt class="sr-only">Role</dt>
-                                <dd class="text-xs text-zinc-500 dark:text-zinc-400">CEO</dd>
+                                <dd class="text-xs text-zinc-500 dark:text-zinc-400">Front End Developer</dd>
                                 <dt class="sr-only">Date</dt>
                                 <dd class="ml-auto text-xs text-zinc-400 dark:text-zinc-500" aria-label="2019 until Present">
                                 <time datetime="2019">2019</time> 
@@ -138,12 +195,12 @@ export default function
                                     decoding="async" 
                                     data-nimg="1" 
                                     class="h-7 w-7" 
-                                    src="/_next/static/media/airbnb.b4000690.svg" 
+                                    src={logo} 
                                     />
                                 </div>
                                 <dl class="flex flex-auto flex-wrap gap-x-2">
                                     <dt class="sr-only">Company</dt>
-                                    <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">Airbnb</dd>
+                                    <dd class="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">BPOSeats</dd>
                                     <dt class="sr-only">Role</dt>
                                     <dd class="text-xs text-zinc-500 dark:text-zinc-400">Product Designer</dd>
                                     <dt class="sr-only">Date</dt>
